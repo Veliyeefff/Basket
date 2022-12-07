@@ -3,20 +3,29 @@ const objarr = [
         id : 1,
         name : 'T-Shirt',
         price : 100,
+        image : "https://99designs-blog.imgix.net/blog/wp-content/uploads/2017/11/Tshirt-design.jpg?auto=format&q=60&w=2060&h=1158.75&fit=crop&crop=faces"
     },
     {
         id : 2,
         name : 'Shoes',
-        price : 150
+        price : 150,
+        image : "https://media.npr.org/assets/img/2022/06/07/ap22158692071820-f85a8959a7a0787fb741ec6a1916f6967c30d926-s1100-c50.jpg"
     },
     {
         id : 3,
         name : 'Trousers',
-        price : 200
+        price : 200,
+        image : "https://www.realmenrealstyle.com/wp-content/uploads/2021/11/odd-trousers-and-suit-pants.jpg"
+    },
+    {
+        id : 4,
+        name : "Bag",
+        price : 90,
+        image : "https://cdn.thewirecutter.com/wp-content/uploads/2019/02/Duffel-Bags_lowres-22.jpg"
     }
 ]
 
-let container = document.querySelector(".container")
+let container = document.querySelector(".cont")
 let body = document.querySelector("body")
 let basket = document.querySelector("i")
 
@@ -25,15 +34,20 @@ window.localStorage.setItem("Products", JSON.stringify(objarr))
 objarr.forEach(element => {
     let div = document.createElement("div")
     div.classList.add("card")
-    div.style.backgroundColor = "black"
+    let image = document.createElement("img")
+    image.setAttribute("src",element.image)
+    let product_name = document.createElement("h4")
+    product_name.innerText = element.name
+    let price = document.createElement("p")
+    price.innerText = `${element.price}$`
     let button = document.createElement("button")
     button.innerText = "Add To Basket";
     button.setAttribute("prodId",element.id)
     button.classList.add("btn")
     button.classList.add("btn-primary")
-    div.append(element.id)
-    div.append(element.name)
-    div.append(element.price)
+    div.append(image)
+    div.append(product_name)
+    div.append(price)
     div.appendChild(button)
     container.appendChild(div)
 })
@@ -68,8 +82,28 @@ btn.forEach(element =>{
             }
             basket_array.push(newItem)
         }
+        counter++;
+        span.innerText = counter
         localStorage.setItem("Basket", JSON.stringify(basket_array))
      })
+})
+
+$('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    nav:true,
+    autoplay:true,
+    responsive:{
+        0:{
+            items:1
+        },
+        800:{
+            items:2
+        },
+        1000:{
+            items:4
+        }
+    }
 })
 
 
