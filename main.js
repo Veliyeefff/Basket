@@ -21,7 +21,7 @@ const objarr = [
         id : 4,
         name : "Bag",
         price : 90,
-        image : "https://cdn.thewirecutter.com/wp-content/uploads/2019/02/Duffel-Bags_lowres-22.jpg"
+        image : "https://cdn.shopify.com/s/files/1/1154/7914/files/canvas_duffle_bag.jpg?v=1654218702&width=1500+"
     }
 ]
 

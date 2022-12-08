@@ -28,30 +28,30 @@ basket_array.forEach(element =>{
     tbody.appendChild(tr)
 })
 
+
 table.addEventListener('click',function(e){
+    let newbasket = basket_array.filter(x=>x.count>1)
     if(e.target.className == 'plus'){
         e.target.previousElementSibling.innerText++;
-        basket_array.forEach(element =>{
+        newbasket.forEach(element =>{
             if(e.target.parentElement.parentElement.firstElementChild.innerText == element.product.id){
                 element.count++;
             }
         })
         counter++;
-        localStorage.setItem("Basket",JSON.stringify(basket_array))
+        localStorage.setItem("Basket",JSON.stringify(newbasket))
     }
     else if(e.target.className == 'minus'){
         e.target.nextElementSibling.innerText--;
-        basket_array.forEach(element =>{
+        newbasket.forEach(element =>{{
             if(e.target.parentElement.parentElement.firstElementChild.innerText == element.product.id){
-                if(element.count>0){
-                    console.log(element);
-                }
                 element.count--;
             }
+        } 
         })
         counter--;
-        localStorage.setItem("Basket",JSON.stringify(basket_array))
-    }
+        localStorage.setItem("Basket",JSON.stringify(newbasket))
+        }
     span.innerText = counter
 })
 
